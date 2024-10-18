@@ -4,13 +4,18 @@ import {v4 as uuidv4} from 'uuid';
 class City {
   name : string;
   id: string;
-
+  weather: {
+    temperature: string;
+    description: string;
+  } | null;
   constructor(
     name: string,
-    id: string
+    id: string,
+    weather = null
   ){
     this.name = name;
     this.id = id;
+    this.weather = weather;
   }
 
 }
@@ -48,7 +53,7 @@ class HistoryService {
     });
   }
   // TODO Define an addCity method that adds a city to the searchHistory.json file
-  async addCity(city: string) {
+  async addCity(city: string, weather: any) {
     if (!city) {
       throw new Error('City can not be blank');
     }
@@ -57,6 +62,7 @@ class HistoryService {
     const newCity: City = {
       name : city,
       id: uuidv4(),
+      weather
     }
 
     // Get all cities, add the new city, write all the updated cities, return the newCities
