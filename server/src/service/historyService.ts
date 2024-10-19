@@ -6,7 +6,12 @@ class City {
   id: string;
   weather: {
     temperature: string;
-    description: string;
+    date: string; 
+    icon: string;    
+    iconDescription: string;  
+    tempF: string; 
+    windSpeed: string; 
+    humidity: string;
   } | null;
   constructor(
     name: string,

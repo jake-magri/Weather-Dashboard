@@ -1,0 +1,14 @@
+[
+	{
+		"name": "London",
+		"id": "8ab837f0-baa8-40dc-920f-f0e312c6d5cd",
+		"weather": {
+			"tempF": 55.51,
+			"date": "2024-10-19T00:00:00.000Z",
+			"icon": "10n",
+			"iconDescription": "light rain",
+			"windSpeed": 9.62,
+			"humidity": 89
+		}
+	}
+]

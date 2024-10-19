@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,12 +9,26 @@ dotenv.config();
 
 // Define a class for the Weather object
 class Weather {
-  temperature: string;
-  description: string;
+  date: string; 
+  icon: string;    
+  iconDescription: string;  
+  tempF: string; 
+  windSpeed: string; 
+  humidity: string;
 
-  constructor(temperature: string, description: string) {
-    this.temperature = temperature;
-    this.description = description;
+  constructor(
+    date: string, 
+    icon: string,    
+    iconDescription: string,  
+    tempF: string, 
+    windSpeed: string, 
+    humidity: string) {
+    this.tempF = tempF;
+    this.date = date; 
+    this.icon = icon;    
+    this.iconDescription = iconDescription;  
+    this.windSpeed = windSpeed; 
+    this.humidity = humidity;
   }
 }
 
@@ -25,7 +38,7 @@ class WeatherService {
   private apiKey: string;
 
   constructor() {
-    this.baseURL = 'https://api.openweathermap.org';
+    this.baseURL = process.env.API_BASE_URL || '';
     this.apiKey = process.env.OPENWEATHER_API_KEY || '';
   }
 
@@ -53,14 +66,16 @@ class WeatherService {
   async getWeatherForCity(city: string): Promise<Weather> {
     try {
       // Fetch weather data from the API
-      let response = await fetch(`${this.baseURL}/data/2.5/forecast?q=${city}&appid=${this.apiKey}`);
+      console.log(city);
+      console.log('this is the url' +`${this.baseURL}/data/2.5/forecast?q=${city}&units=imperial&appid=${this.apiKey}`);
+      let response = await fetch(`${this.baseURL}/data/2.5/forecast?q=${city}&units=imperial&appid=${this.apiKey}`);
       if (!response.ok) {
         throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
       const weather = this.parseCurrentWeather(data);
-      return weather; // Return the weather data
+      return weather; // Return the new weather data object
     } catch (error) {
       console.error(`Error:`, error);
       throw error;
@@ -68,29 +83,25 @@ class WeatherService {
   }
 
   // Define a method to read weather data from a file
-  private async readWeatherData() {
-    try {
-      const data = await fs.readFile('db/searchHistory.json', 'utf8');
-      return JSON.parse(data) || [];
-    } catch (error) {
-      return [];
-  }}
 
   // Parse the current weather data
   private parseCurrentWeather(data: any): Weather {
-    const temperature = data.list[0].main.temp; // Get temperature from the first forecast item
-    const description = data.list[0].weather[0].description; // Get weather description
-    return new Weather(temperature, description);
+    // Ensure there is data to parse
+    if (!data || !data.list || data.list.length === 0) {
+      throw new Error('Invalid weather data');
   }
+  console.log('this is the package retrieved from the api'+data);
+  // Extract the first forecast item
+  const forecastItem = data.list[0];
 
-  // Retrieve existing weather history from file
-  private async getWeatherHistory(): Promise<(Weather & { city: string })[]> {
-    try {
-      const weatherJson = await this.readWeatherData();
-      return JSON.parse(weatherJson) || [];
-    } catch (error) {
-      return []; // Return an empty array if reading fails
-    }
+  // Get the necessary weather information
+  const date = new Date(forecastItem.dt * 1000).toISOString(); // Convert UNIX timestamp to ISO string
+  const tempF = forecastItem.main.temp; // Temperature in Fahrenheit
+  const icon = forecastItem.weather[0].icon; // Weather icon code
+  const iconDescription = forecastItem.weather[0].description; // Description (can be same as `description`)
+  const windSpeed = forecastItem.wind.speed; // Wind speed
+  const humidity = forecastItem.main.humidity; // Humidity percentage
+    return new Weather(date, icon, iconDescription, tempF, windSpeed, humidity);
   }
 }
 
