@@ -1,13 +1,8 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; // dotenv for reading base url and api key from environment file
 
-dotenv.config();
+dotenv.config(); // reads env file and loads variables to process.env
 
-// Define an interface for the Coordinates object
-// interface Coordinates {
-//   cityName: string;
-// }
-
-// Define a class for the Weather object
+// class for the Weather object
 class Weather {
   city: string;
   date: string;
@@ -35,35 +30,15 @@ class Weather {
   }
 }
 
-// Define a class for the WeatherService
+// class for the WeatherService
 class WeatherService {
   baseURL: string;
   private apiKey: string;
 
   constructor() {
-    this.baseURL = process.env.API_BASE_URL || '';
+    this.baseURL = process.env.API_BASE_URL || ''; // get base url and api key from .env file or return empty string
     this.apiKey = process.env.OPENWEATHER_API_KEY || '';
   }
-
-  // TODO: Create fetchLocationData method
-  // private async fetchLocationData(query: string) {}
-  // TODO: Create destructureLocationData method
-  // private destructureLocationData(locationData: Coordinates): Coordinates {}
-  // TODO: Create buildGeocodeQuery method
-  // private buildGeocodeQuery(): string {}
-  // TODO: Create buildWeatherQuery method
-  // private buildWeatherQuery(coordinates: Coordinates): string {}
-  // TODO: Create fetchAndDestructureLocationData method
-  // private async fetchAndDestructureLocationData() {}
-  // TODO: Create fetchWeatherData method
-  // private async fetchWeatherData() {
-  //   let cityName = this.cityName;
-  //   `api.openweathermap.org/data/2.5/forecast?q={cityName}&appid={apikey}`}
-  // TODO: Build parseCurrentWeather method
-  // TODO: Complete buildForecastArray method
-  // private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
-  // TODO: Complete getWeatherForCity method
-
 
   // Define a method to get weather data (either from file or API)
   async getWeatherForCity(city: string): Promise<Weather[]> {
@@ -76,18 +51,16 @@ class WeatherService {
         throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
+      const data = await response.json(); // parse the json from the api response
       console.log('This is the raw data from the api' + data);
-      const weatherArray = this.parseCurrentWeather(data);
+      const weatherArray = this.parseCurrentWeather(data); // convert parsed api response to usable object array
       console.log('This is the parsed data from the api' + weatherArray)
-      return weatherArray; // Return the new weather data object
+      return weatherArray; // Return the new weather array
     } catch (error) {
       console.error(`Error:`, error);
       throw error;
     }
   }
-
-  // Define a method to read weather data from a file
 
   // Parse the current weather data
   private parseCurrentWeather(data: any): Weather[] {
@@ -100,8 +73,8 @@ class WeatherService {
     // get a single time for each day 12:00:00 noon
     const dailyForecasts = data.list.filter((forecastItem: any) => {
       // Extract the time part of the dt_txt (e.g., "12:00:00")
-      const time = forecastItem.dt_txt.split(' ')[1];
-      return time === '12:00:00';
+      const time = forecastItem.dt_txt.split(' ')[1]; // split time off object property
+      return time === '12:00:00'; // only return objects with times of 12
   });
   const cityName = data.city.name;
   console.log('City Name pulled off json object');
@@ -109,13 +82,13 @@ class WeatherService {
     const weatherArray: Weather[] = dailyForecasts.map((forecastItem: any) => {
       // Get the necessary weather information
       const city = cityName;
-      const date = new Date(forecastItem.dt * 1000).toLocaleDateString(); // Convert UNIX timestamp to ISO string
+      const date = new Date(forecastItem.dt * 1000).toLocaleDateString(); // Convert to nice format
       const tempF = forecastItem.main.temp; // Temperature in Fahrenheit
       const icon = forecastItem.weather[0].icon; // Weather icon code
-      const iconDescription = forecastItem.weather[0].description; // Description (can be same as `description`)
+      const iconDescription = forecastItem.weather[0].description; // Description 
       const windSpeed = forecastItem.wind.speed; // Wind speed
       const humidity = forecastItem.main.humidity; // Humidity percentage
-      // Create new weather object from api data in list
+      // Create new weather object from api data in list and save to new array
       return new Weather(city, date, icon, iconDescription, tempF, windSpeed, humidity);
     });
     console.log('this is the generated weather array'+ JSON.stringify(weatherArray));
@@ -126,4 +99,4 @@ class WeatherService {
 }
 
 
-export default new WeatherService();
+export default new WeatherService(); // export weatherservice and make methods accessible to other files

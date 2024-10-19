@@ -1,11 +1,11 @@
-import fs from 'node:fs/promises';
-import { v4 as uuidv4 } from 'uuid';
-// TODO: Define a City class with name and id properties
+import fs from 'node:fs/promises'; // file system from node to read files
+import { v4 as uuidv4 } from 'uuid'; // uuid for unique id
+// City class with name and id properties
 class City {
   name: string;
   id: string;
-  weather: [{
-    name: string;
+  weather: [{ // weather object to retrieve from history without recalling api
+    name: string; 
     temperature: string;
     date: string;
     icon: string;
@@ -25,80 +25,80 @@ class City {
   }
 
 }
-// TODO: Complete the HistoryService class
+// HistoryService class
 class HistoryService {
-  // TODO: Define a read method that reads from the searchHistory.json file
-  // private async read() {}
+  // Read method that reads from the searchHistory.json file
   private async read() {
     return await fs.readFile('db/searchHistory.json', {
       flag: 'r',
       encoding: 'utf8',
     });
   }
-  // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
+  // Write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]) {
     return await fs.writeFile(
       'db/searchHistory.json',
       JSON.stringify(cities, null, '\t')
     );
   }
-  // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
+  // getCities method that reads the cities from the searchHistory.json file uand returns them as an array of City objects
   async getCities() {
     return await this.read().then((citiesJson) => {
       let parsedCities: City[];
 
-      // If cities isn't an array or can't be turned into one, send back a new empty array
+      
       try {
         parsedCities = [].concat(JSON.parse(citiesJson)); // If JSON.parse(citiesJson) returns an array, concat will return that array. If it returns a single object (not an array), 
-        // concat will convert that object into an array with that object as the only element.
+        // concat will convert the objects into an array with those objects as elements.
       } catch (err) {
+        // If cities isn't an array or can't be turned into one, send back a new empty array
         parsedCities = [];
       }
 
-      return parsedCities;
+      return parsedCities; // return the parsed cities
     });
   }
-  // TODO Define an addCity method that adds a city to the searchHistory.json file
+  // addCity method that adds a city to the searchHistory.json file
   async addCity(city: string, weather: any) {
     if (!city) {
       throw new Error('City can not be blank');
     }
-    const citiesArray = await this.getCities();
-    let cityExists = false;
+    const citiesArray = await this.getCities(); // get cities array
+    let cityExists = false; 
     let existingCity = new City('','',null);
-    // Add a unique id to the city using uuid package
+    
     for (let i = 0; i < citiesArray.length; i++) {
-      if (city.toLowerCase() === citiesArray[i].name.toLowerCase()) {
+      if (city.toLowerCase() === citiesArray[i].name.toLowerCase()) { // check if city already exists in the array of cities
         cityExists = true; // set the flag if a matching name is found
         existingCity = citiesArray[i]; // Store the existing city object
         break; // exit if city exists
       }
     }
-    // if it doesnt exist, create a new one
+    // if it doesnt exist, create a new city objet
     if (!cityExists) {
       const newCity: City = {
         name: city,
-        id: uuidv4(),
+        id: uuidv4(), // Add a unique id to the city using uuid package for delete lookup
         weather
       }
       console.log('this is a new city object with weather' + JSON.stringify(newCity));
 
 
-      // Get all cities, add the new city, write all the updated cities, return the newCities
+      // Get all cities, add the new city, write all the updated cities, return the new city
       return await this.getCities()
         .then((parsedCities) => {
-          return [...parsedCities, newCity];
+          return [...parsedCities, newCity]; // merge new city with parsedCities array
         })
-        .then((updatedCities) => this.write(updatedCities))
-        .then(() => newCity);
+        .then((updatedCities) => this.write(updatedCities)) // write the array to the JSON file
+        .then(() => newCity); // return new city
     } else {
-      console.log('City already exists: ' + city);
+      console.log('City already exists: ' + city); // if city doesnt exist, log a response and return the current city
       return existingCity;
   } }
 
-  // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
+  // removeCity method that removes a city from the searchHistory.json file
   async removeCity(id: string) {
-    return await this.getCities().then((cities: City[]): City[] => { // get parsed cities
+    return await this.getCities().then((cities: City[]): City[] => { // get parsed cities array
       return cities.filter(city => city.id !== id); // filter out passed id
     })
       .then((filteredCities) => this.write(filteredCities)) // write updated array back to file
@@ -106,4 +106,4 @@ class HistoryService {
 }
 
 
-export default new HistoryService();
+export default new HistoryService(); // export history service object with methods

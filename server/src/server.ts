@@ -1,20 +1,20 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; // dotenv for reading port number from environment file
 import express, {} from 'express';
-dotenv.config();
+dotenv.config(); // calling config reads .env file and loads variables int process.env
 
 // Import the routes
 import routes from './routes/index.js';
 
-const app = express();
+const app = express(); // initialize express
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001; // assigns the PORT for use
 console.log('GET request received at server.ts.');
-// TODO: Serve static files of entire client dist folder
+// Serve static files of entire client dist folder
 app.use(express.static('../../client/dist'));
-// TODO: Implement middleware for parsing JSON and urlencoded form data
+// middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// TODO: Implement middleware to connect the routes
+// middleware to connect the routes
 app.use(routes);
 
 // Start the server on the port
