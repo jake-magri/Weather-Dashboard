@@ -14,10 +14,10 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     // Fetch weather data and save it to the history
-    const weather = await weatherService.getWeatherForCity(cityName);
-    const savedCity = await historyService.addCity(cityName, weather); // TODO: save city to search history
-
-    return res.status(200).json({ message: 'Weather added successfully', weather: savedCity.weather});
+    const weatherArray = await weatherService.getWeatherForCity(cityName);
+    const savedCity = await historyService.addCity(cityName, weatherArray); // TODO: save city to search history
+    console.log('this is the history response object.weather'+JSON.stringify(savedCity.weather))
+    return res.status(200).json(savedCity.weather);
   } catch (error) {
     console.error('Error fetching weather:', error);
     return res.status(500).json({ message: 'Error fetching weather data' });
