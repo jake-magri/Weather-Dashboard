@@ -1,52 +1,103 @@
 [
 	{
+		"name": "San Diego",
+		"id": "c096ef88-3656-4bb1-9a71-d31dce7cf9b1",
+		"weather": [
+			{
+				"city": "San Diego",
+				"tempF": 67.95,
+				"date": "10/20/2024",
+				"icon": "01n",
+				"iconDescription": "clear sky",
+				"windSpeed": 3.67,
+				"humidity": 32
+			},
+			{
+				"city": "San Diego",
+				"tempF": 67.91,
+				"date": "10/21/2024",
+				"icon": "01n",
+				"iconDescription": "clear sky",
+				"windSpeed": 4.81,
+				"humidity": 45
+			},
+			{
+				"city": "San Diego",
+				"tempF": 67.08,
+				"date": "10/22/2024",
+				"icon": "01n",
+				"iconDescription": "clear sky",
+				"windSpeed": 6.46,
+				"humidity": 58
+			},
+			{
+				"city": "San Diego",
+				"tempF": 68.32,
+				"date": "10/23/2024",
+				"icon": "03n",
+				"iconDescription": "scattered clouds",
+				"windSpeed": 6.2,
+				"humidity": 57
+			},
+			{
+				"city": "San Diego",
+				"tempF": 68.18,
+				"date": "10/24/2024",
+				"icon": "04n",
+				"iconDescription": "overcast clouds",
+				"windSpeed": 4.12,
+				"humidity": 58
+			}
+		]
+	},
+	{
 		"name": "London",
-		"id": "433d22c5-86b7-4e5c-8606-be9e3b0a8a80",
+		"id": "e10dfd05-0d10-4289-afaf-7a8af2839f66",
 		"weather": [
 			{
 				"city": "London",
-				"tempF": 56.79,
-				"date": "10/19/2024",
-				"icon": "10d",
-				"iconDescription": "moderate rain",
-				"windSpeed": 8.16,
-				"humidity": 79
-			},
-			{
-				"city": "London",
-				"tempF": 60.87,
+				"tempF": 59.95,
 				"date": "10/20/2024",
 				"icon": "10d",
 				"iconDescription": "light rain",
-				"windSpeed": 19.33,
+				"windSpeed": 17.9,
 				"humidity": 92
 			},
 			{
 				"city": "London",
-				"tempF": 50.95,
+				"tempF": 57.74,
 				"date": "10/21/2024",
-				"icon": "10d",
-				"iconDescription": "moderate rain",
-				"windSpeed": 2.1,
-				"humidity": 87
-			},
-			{
-				"city": "London",
-				"tempF": 57.7,
-				"date": "10/22/2024",
-				"icon": "03d",
-				"iconDescription": "scattered clouds",
-				"windSpeed": 7.09,
-				"humidity": 68
-			},
-			{
-				"city": "London",
-				"tempF": 56.79,
-				"date": "10/23/2024",
 				"icon": "04d",
 				"iconDescription": "overcast clouds",
-				"windSpeed": 5.08,
-				"humidity": 85
+				"windSpeed": 9.31,
+				"humidity": 54
+			},
+			{
+				"city": "London",
+				"tempF": 59.67,
+				"date": "10/22/2024",
+				"icon": "04d",
+				"iconDescription": "broken clouds",
+				"windSpeed": 10.67,
+				"humidity": 63
+			},
+			{
+				"city": "London",
+				"tempF": 60.73,
+				"date": "10/23/2024",
+				"icon": "03d",
+				"iconDescription": "scattered clouds",
+				"windSpeed": 4.65,
+				"humidity": 69
+			},
+			{
+				"city": "London",
+				"tempF": 59.7,
+				"date": "10/24/2024",
+				"icon": "01d",
+				"iconDescription": "clear sky",
+				"windSpeed": 11.48,
+				"humidity": 56
 			}
 		]
 	}
