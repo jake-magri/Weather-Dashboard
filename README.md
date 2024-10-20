@@ -21,7 +21,7 @@ This application has been deployed using Render.
 ## Usage
 
 ### Screenshot
-![Screenshot](assets/weather-dashboard-screenshot.png)
+![Screenshot](Assets/weather-dashboard-screenshot.png)
 
 ### Usage Information
 - The application has a searchbox on the top left of the screen to search your desired city. 
