@@ -100,5 +100,56 @@
 				"humidity": 56
 			}
 		]
+	},
+	{
+		"name": "Charlotte",
+		"id": "eb20ccca-8718-411d-8eba-b8e76a32fa8e",
+		"weather": [
+			{
+				"city": "Charlotte",
+				"tempF": 50.5,
+				"date": "10/20/2024",
+				"icon": "03d",
+				"iconDescription": "scattered clouds",
+				"windSpeed": 4.07,
+				"humidity": 60
+			},
+			{
+				"city": "Charlotte",
+				"tempF": 53.06,
+				"date": "10/21/2024",
+				"icon": "01d",
+				"iconDescription": "clear sky",
+				"windSpeed": 3.87,
+				"humidity": 67
+			},
+			{
+				"city": "Charlotte",
+				"tempF": 53.58,
+				"date": "10/22/2024",
+				"icon": "01d",
+				"iconDescription": "clear sky",
+				"windSpeed": 4.32,
+				"humidity": 71
+			},
+			{
+				"city": "Charlotte",
+				"tempF": 55.09,
+				"date": "10/23/2024",
+				"icon": "01d",
+				"iconDescription": "clear sky",
+				"windSpeed": 3.06,
+				"humidity": 58
+			},
+			{
+				"city": "Charlotte",
+				"tempF": 58.51,
+				"date": "10/24/2024",
+				"icon": "01d",
+				"iconDescription": "clear sky",
+				"windSpeed": 4.41,
+				"humidity": 60
+			}
+		]
 	}
 ]
