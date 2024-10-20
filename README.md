@@ -3,7 +3,7 @@
 
 ## Description
 
-A simple and easy to read 5 day forecast for searchable cities that gets information from a weather api and routes the data from the server to the client application using node.js express. This application's CRUD endpoints are tested using Insomnia. Middleware and modular routing have be incorporated.
+This weather forecasting application provides an intuitive 5-day forecast for searchable cities, retrieving real-time data from a reliable weather API. Built with Node.js and Express, it efficiently routes data from the server to the client application. The application features fully functional CRUD endpoints, tested for reliability using Insomnia. With middleware and modular routing implemented, the architecture supports maintainability and scalability.
 
 ## Table of Contents
 
