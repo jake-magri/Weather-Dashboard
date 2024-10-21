@@ -3,7 +3,7 @@
 
 ## Description
 
-This weather forecasting application provides an intuitive 5-day forecast for searchable cities, retrieving real-time data from a reliable weather API. Built with Node.js and Express, it efficiently routes data from the server to the client application. The application features fully functional CRUD endpoints, tested for reliability using Insomnia. With middleware and modular routing implemented, the architecture supports maintainability and scalability.
+Weather Dashboard provides an intuitive 5-day forecast for searchable cities, retrieving real-time data from a weather API. Built with Node.js and Express, it efficiently routes data from the server to the client application. The application features fully functional CRUD endpoints, tested for reliability using Insomnia. With middleware and modular routing implemented, the architecture supports maintainability and scalability.
 
 ## Table of Contents
 
@@ -25,8 +25,8 @@ This application has been deployed using Render and can be accessed by navigatin
 ![Screenshot](Assets/weather-dashboard-screenshot.png)
 
 ### Usage Information
-- The application has a searchbox on the top left of the screen to search your desired city. 
-- You can then view the weather dashboard on submission or by selecting a city from history. 
+- Use the searchbox on the top left of the screen to search your desired city. 
+- View the weather dashboard on search submission or by selecting a city from history. 
 - There is a red button on each city in the search history list that can be used to delete from history.
 
 ## How to Contribute
