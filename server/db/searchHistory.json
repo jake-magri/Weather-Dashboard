@@ -151,5 +151,56 @@
 				"humidity": 60
 			}
 		]
+	},
+	{
+		"name": "Chicago",
+		"id": "753dc4bd-afc0-434a-85a7-7131943a5503",
+		"weather": [
+			{
+				"city": "Chicago",
+				"tempF": 59.68,
+				"date": "10/21/2024",
+				"icon": "01n",
+				"iconDescription": "clear sky",
+				"windSpeed": 7.65,
+				"humidity": 40
+			},
+			{
+				"city": "Chicago",
+				"tempF": 61.18,
+				"date": "10/22/2024",
+				"icon": "04n",
+				"iconDescription": "overcast clouds",
+				"windSpeed": 9.26,
+				"humidity": 46
+			},
+			{
+				"city": "Chicago",
+				"tempF": 63.07,
+				"date": "10/23/2024",
+				"icon": "03n",
+				"iconDescription": "scattered clouds",
+				"windSpeed": 10.71,
+				"humidity": 58
+			},
+			{
+				"city": "Chicago",
+				"tempF": 50.76,
+				"date": "10/24/2024",
+				"icon": "01n",
+				"iconDescription": "clear sky",
+				"windSpeed": 6.6,
+				"humidity": 57
+			},
+			{
+				"city": "Chicago",
+				"tempF": 61.14,
+				"date": "10/25/2024",
+				"icon": "10n",
+				"iconDescription": "light rain",
+				"windSpeed": 13.65,
+				"humidity": 86
+			}
+		]
 	}
 ]
