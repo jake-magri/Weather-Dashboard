@@ -1,4 +1,4 @@
-import express, { type Request, type Response } from 'express';
+import { type Request, type Response, } from 'express';
 import path from 'node:path'; // node path for handling file paths
 import { fileURLToPath } from 'node:url'; // file to path converts URL to a file path
 import { Router } from 'express'; // import router with routes
