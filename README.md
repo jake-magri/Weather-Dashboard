@@ -16,7 +16,7 @@ This weather forecasting application provides an intuitive 5-day forecast for se
 
 ## Installation
 
-This application has been deployed using Render and can be accessed by navigating to the link below.
+This application has been deployed using Render and can be accessed by navigating to the following link.
 [Weather Dashboard](https://weather-dashboard-jm.onrender.com/)
 
 ## Usage
